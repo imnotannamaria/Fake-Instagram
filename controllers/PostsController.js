@@ -8,8 +8,8 @@ const postsController = {
     },
 
     create: async (req, res) => {
-         const {texto, img, usuarios_id, n_likes} = req.body;
-         const novoPost = await Post.create ({
+         let { texto, img, usuarios_id, n_likes } = req.body;
+         let novoPost = await Post.create ({
           texto,
           img,
           usuarios_id,
@@ -20,8 +20,8 @@ const postsController = {
     },
 
     update: async (req,res) => {
-        const {id} = req.params;
-        const{texto, img, usuarios_id, n_likes} = req.body;
+        const { id } = req.params;
+        const{ texto, img, usuarios_id, n_likes } = req.body;
 
         const posts = await Post.update({
             texto,
@@ -36,7 +36,7 @@ const postsController = {
     },
 
     delete: async (req, res) => {
-        const {id} = req.params;
+        const { id } = req.params;
 
         const posts = await Post.destroy({
             where: {id}
@@ -44,9 +44,7 @@ const postsController = {
 
         return res.json(posts);
     }
-
-
-    }
+}
     
 
 module.exports = postsController;
