@@ -7,13 +7,26 @@ const postsController = {
         return res.json(posts);
     },
 
+    show: async (req, res) => {
+        const { usuarios_id } = req.params;
+        let posts = await Post.findAll(
+            {
+                where: { usuarios_id }
+
+            }
+
+        );
+       
+        return res.json(posts);
+    },
+
     create: async (req, res) => {
-         let { texto, img, usuarios_id, n_likes } = req.body;
-         let novoPost = await Post.create ({
+         const { texto, img, usuarios_id, n_likes } = req.body;
+         const novoPost = await Post.create ({
           texto,
           img,
-          usuarios_id,
-          n_likes
+          n_likes,
+          usuarios_id 
          });
 
          return res.json(novoPost);
@@ -21,7 +34,7 @@ const postsController = {
 
     update: async (req,res) => {
         const { id } = req.params;
-        const{ texto, img, usuarios_id, n_likes } = req.body;
+        const { texto, img, usuarios_id, n_likes } = req.body;
 
         const posts = await Post.update({
             texto,
