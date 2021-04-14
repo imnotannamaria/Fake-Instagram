@@ -2,9 +2,9 @@
 const { Usuario } = require('../models');
 
 module.exports = async(request, response, next) => {
-    let { email, senha } = request.body;
+    let { nome, email, senha } = request.body;
 
-    let user = await Usuario.findAll({where: { email, senha }});
+    let user = await Usuario.findAll({where: { nome, email, senha }});
 
     //se achar um usuário o array retornou 1 ou mais
     if(user.length){
@@ -17,11 +17,16 @@ module.exports = async(request, response, next) => {
             if(!senha){
                 response.status(400).json({error: "Por favor informe a sua senha :("});
             }else{
-                if(senha.length < 6 || senha.length > 12){
-                    response.status(400).json({error: "Senha inválida, deve ter de 6 a 12 digitos."});
-                }else{
-                    next();
+                if(!nome){
+                    response.status(400).json({error: "Por favor informe a seu nome :("});
+                }else {
+                    if(senha.length < 6 || senha.length > 12){
+                        response.status(400).json({error: "Senha inválida, deve ter de 6 a 12 digitos."});
+                    }else{
+                        next();
+                    }
                 }
+                
             }
         }
     }
