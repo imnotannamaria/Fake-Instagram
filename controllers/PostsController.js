@@ -3,8 +3,8 @@ const {Post, sequelize} = require('../models');
 const postsController = {
     index: async (req, res) => {
         let posts =  await Post.findAll();
-       
-        return res.json(posts);
+        
+        return res.render('index', { listaPosts: posts });
     },
 
     show: async(request, response) => {
@@ -20,15 +20,15 @@ const postsController = {
     },
 
     create: async (req, res) => {
-         const { texto, img, usuarios_id, n_likes } = req.body;
-         const novoPost = await Post.create ({
-          texto,
-          img,
-          n_likes,
-          usuarios_id 
-         });
+        const { texto, img, usuarios_id, n_likes } = req.body;
+        const novoPost = await Post.create ({
+            texto,
+            img,
+            n_likes,
+            usuarios_id 
+        });
 
-         return res.json(novoPost);
+        return res.json(novoPost);
     },
 
     update: async (req,res) => {

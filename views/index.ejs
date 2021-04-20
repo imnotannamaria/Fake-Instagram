@@ -1,13 +1,64 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Bem vindo(a) ao <%= title %></p> 
-    <br>
-    <p>By <b>Anna Maria</b></p>
-  </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Instagram</title>
+    <link rel="icon" type="imagem/png" href="/img/icone.ico" />
+</head>
+
+<body>
+    
+    <header>
+
+        <img class="logo" src="/img/logo.png" alt="">
+
+    </header>
+
+    <% for(let post of listaPosts) { %> 
+    <article class="post">
+
+        <div class="post-header">
+            <img class="post-icon" src="/img/avatar-example.png" alt="">
+
+            <p><strong>Gabriella Brunetti</strong></p>
+
+            <img class="post-icon-more" src="/img/icons/more-vertical.svg" alt="">
+        </div>
+
+        <div class="img-post">
+            <img src="/img/publication_example.jpg" alt="">
+        </div>
+
+        <div class="post-info-1">
+            <p>oi gente tudo bem?</p>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 4.248c-3.148-5.402-12-3.825-12 2.944 0 4.661 5.571 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-6.792-8.875-8.306-12-2.944z"/></svg>    
+            <p><b>3 likes</b></p>
+            <p><b>Postado no dia 16/04/2021</b></p>
+        </div>
+
+        <div class="post-info-2">
+            <ol>
+                <li> <%= post.nome %> </li>
+                <li> <%= post.nome %> </li>
+                <li> Oi gente é o !@#!%$% Meu nome agora é Zé pequeno!</li>
+                <li> Oi sumido! :)</li>
+            </ol>
+                
+        </div>
+
+        <div class="post-footer">
+            <form>
+                <input type="text" name="comentario" id="comentario" placeholder="Adicione um comentário">
+                <button type="submit">Publicar</button>
+            </form>
+        </div>
+
+    </article>
+    <% } %> 
+
+    </div>
+</body>
 </html>
