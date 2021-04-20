@@ -21,7 +21,7 @@ module.exports = async(request, response, next) => {
                     response.status(400).json({error: "Por favor informe a seu nome :("});
                 }else {
                     if(senha.length < 6 || senha.length > 12){
-                        response.status(400).json({error: "Senha inválida, deve ter de 6 a 12 digitos."});
+                        response.status(400).json({error: "Senha inválida, sua senha deve ter de 6 a 12 digitos."});
                     }else{
                         next();
                     }
